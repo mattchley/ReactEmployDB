@@ -1,26 +1,8 @@
-import React, { Component } from "react";
-import Wrapper from "./components/Wrapper";
-import Nav from "./components/Nav"
-import SearchBox from "./components/SearchBox";
+import React from "react";
+import Main from "./components/Main";
 
-class App extends Component {
-  // Setting this.state.employee to the employee json array
-  // state = {
-  //   employee
-  // };
-
-
-  render() {
-    return (
-
-      <Wrapper>
-        <Nav>
-        </Nav>
-      <SearchBox />
-      </Wrapper>
-
-    );
-  }
+function App() {
+  return <Main />;
 }
 
 export default App;
