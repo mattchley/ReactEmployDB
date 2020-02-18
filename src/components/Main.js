@@ -2,32 +2,33 @@ import React, { Component } from "react";
 import Wrapper from "./Wrapper";
 import Nav from "./Nav";
 import SearchBox from "./SearchBox";
-import DataBody from "./DataBody";
+import DataTable from "./DataTable";
 import API from "../utils/API";
 
 class Main extends Component {
     state = {
-        result: {},
+        results: [],
         search: ""
     };
 
+    // When this component mounts, search for the movie "The Matrix"
     componentDidMount() {
         this.searchEmployeees();
     }
 
     searchEmployeees = () => {
-        API.search(20)
+        API.search(3)
         .then(res => {
             this.setState({results: res.data.results});
             console.log(this.state.results)
         }).catch(err => console.log(err))
+
     };
 
     handleInputChange = event => {
         const value = event.target.value;
-        const search = event.target.search;
         this.setState({
-            [search]: value
+            search: value
         });
     };
 
@@ -46,7 +47,7 @@ class Main extends Component {
                         handleFormSubmit={this.handleFormSubmit}
                         handleInputChange={this.handleInputChange}
                     />
-                <DataBody />
+                <DataTable results={this.state.results}/>
             </Wrapper>
         );
     }

@@ -1,26 +1,24 @@
 import React from "react";
 
 function DataBody(props) {
+    let id = 1
     return (
-        <div className="container">
-            <ul className="list-group">
+        <ul className="list-group">
+            {props.result.map(result => (
                 <li className="list-group-item">
-                    <img alt={props.name} className="img-fluid" src={props.picture} />
+                    <p key= {id++}></p>
+                    <img alt={result.name.first} className="img-fluid" src={result.picture.thumbnail} />
                     <span>
-                        {props.name}
-                        {props.phone}
-                        {props.email}
-                        {props.dob}
+                        {result.name.first} {result.name.last}
+                        {result.phone}
+                        {result.email}
+                        {result.dob.date}
                     </span>
                 </li>
-            </ul>
-        </div>
+            ))}
+        </ul>
     );
 }
 
 export default DataBody;
-// {props.results.map(result => (
-//     <li className="list-group-item" key={result.id}>
-//       <img alt={result.title} className="img-fluid" src={result.images.original.url} />
-//     </li>
-//   ))}
+
