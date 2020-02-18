@@ -1,18 +1,13 @@
 import React from "react";
 
 function DataBody(props) {
-    let id = 1
     return (
         <ul className="list-group">
             {props.result.map(result => (
-                <li className="list-group-item">
-                    <p key= {id++}></p>
+                <li className="list-group-item" key={result.login.uuid}>
                     <img alt={result.name.first} className="img-fluid" src={result.picture.thumbnail} />
                     <span>
-                        {result.name.first} {result.name.last}
-                        {result.phone}
-                        {result.email}
-                        {result.dob.date}
+                        Name:{result.name.first} {result.name.last}, Phone:{result.phone}, Email:{result.email}, Date of Birth:{result.dob.date}
                     </span>
                 </li>
             ))}

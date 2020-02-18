@@ -17,7 +17,7 @@ class Main extends Component {
     }
 
     searchEmployeees = () => {
-        API.search(3)
+        API.search(20)
         .then(res => {
             this.setState({results: res.data.results});
             console.log(this.state.results)
