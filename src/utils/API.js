@@ -1,10 +1,10 @@
 import axios from "axios";
+
 export default {
-  // Gets all users
-  getUsers: function() {
-    return axios.get("https://randomuser.me/api/?results=200&nat=us");
-  }
-};
+    search: function (numResults) {
+        return axios.get("https://randomuser.me/api/?results=" + numResults);
+    }
+}
 // i need image, name, phone, email, DOB
 
 // // json format results

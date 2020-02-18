@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Wrapper from "./Wrapper";
 import Nav from "./Nav";
 import SearchBox from "./SearchBox";
-import DataArea from "./DataArea";
+import DataBody from "./DataBody";
 import API from "../utils/API";
 
 class Main extends Component {
@@ -11,22 +11,23 @@ class Main extends Component {
         search: ""
     };
 
-    // When this component mounts, search for the movie "The Matrix"
-    // componentDidMount() {
-    //     this.searchEmployeees("");
-    // }
+    componentDidMount() {
+        this.searchEmployeees();
+    }
 
-    searchEmployeees = query => {
-        API.search(query)
-            .then(res => this.setState({ result: res.data }))
-            .catch(err => console.log(err));
+    searchEmployeees = () => {
+        API.search(20)
+        .then(res => {
+            this.setState({results: res.data.results});
+            console.log(this.state.results)
+        }).catch(err => console.log(err))
     };
 
     handleInputChange = event => {
         const value = event.target.value;
-        const name = event.target.name;
+        const search = event.target.search;
         this.setState({
-            [name]: value
+            [search]: value
         });
     };
 
@@ -40,17 +41,17 @@ class Main extends Component {
         return (
             <Wrapper>
                 <Nav />
-                <div>
                     <SearchBox
                         search={this.state.search}
                         handleFormSubmit={this.handleFormSubmit}
                         handleInputChange={this.handleInputChange}
                     />
-                    <DataArea results={this.state.results} />
-                </div>
+                <DataBody />
             </Wrapper>
         );
     }
 }
 
 export default Main;
+
+
