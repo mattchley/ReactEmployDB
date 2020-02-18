@@ -4,7 +4,7 @@ import DataBody from "./DataBody"
 function DataTable(props) {
     return (
         <div className="container">
-                <DataBody result={props.results}/>
+            <DataBody result={props.results} />
         </div>
     );
 }
